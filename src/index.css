@@ -1,7 +1,49 @@
+/* fixes cell stacking issues by making each cell exactly 14px wide */
 * {
   box-sizing: border-box;
 }
 
 body {
   background-image: url(./darkness.png);
+  background-repeat: repeat;
+}
+.cell {
+  display: inline-block;
+  border: 1px solid black;
+  width: 17px;
+  height: 17px;
+  margin-left: -1px;
+  margin-bottom: -1px;
+}
+.live {
+  background-color: green;
+}
+.dead {
+  background-color: burlywood;
+}
+
+.cell:hover {
+  background: #00ccff;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  color: white;
+  margin: auto;
+  text-align: center;
+  margin-top: 10px;
+}
+
+h4 {
+  margin-top: 0px;
+}
+
+.grid {
+  width: 150px;
+  line-height: 0;
+  margin: auto;
+  box-shadow: 0px 0px 20px white;
+  margin-top: 20px;
 }

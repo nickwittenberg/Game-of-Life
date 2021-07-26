@@ -1,8 +1,32 @@
 import React from "react";
+import Cell from "./Cell";
 
 class Grid extends React.Component {
   render() {
-    return <div>Grid</div>;
+    const width = this.props.cols * 16;
+    let rowsArr = [];
+    let cellClass = "";
+    for (let i = 0; i < this.props.rows; i++) {
+      for (let j = 0; j < this.props.cols; j++) {
+        let cellId = i + "_" + j;
+        cellClass = this.props.gridFull[i][j] ? "cell live" : "cell dead";
+        rowsArr.push(
+          <Cell
+            cellClass={cellClass}
+            key={cellId}
+            cellId={cellId}
+            row={i}
+            col={j}
+            selectCell={this.props.selectCell}
+          />
+        );
+      }
+    }
+    return (
+      <div className="grid" style={{ width: width }}>
+        {rowsArr}
+      </div>
+    );
   }
 }
 
