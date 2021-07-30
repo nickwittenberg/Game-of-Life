@@ -1,8 +1,9 @@
-import React, { useState, useEffect, useLayoutEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import ReactDOM from "react-dom";
 import Grid from "./Grid.js";
 import "./index.css";
 
+// This is how I had React set up with a class component. Below is how it looks as a function.
 // class Main extends React.Component {
 //   constructor() {
 //     super();
@@ -136,7 +137,7 @@ import "./index.css";
 
 // ********************************************************
 
-const Main = (props) => {
+const Main = () => {
   let speed = 100;
   let rows = 30;
   let cols = 50;
@@ -156,6 +157,7 @@ const Main = (props) => {
 
   // ********************************************************************************
   // CHECK THIS
+  // eslint-disable-next-line
   useEffect(() => germinate(), []);
 
   const arrayClone = (array) => {
@@ -246,18 +248,29 @@ const Main = (props) => {
   };
 
   // *********************************************************************************
-  //This was the hardest part to change. The hook wouldn't work until I entered cleaerInterval function
 
-  useLayoutEffect(() => {
-    let a = setInterval(() => {
-      cycle();
-    }, speed);
-    return () => clearInterval(a);
+  const savedCallback = useRef();
+
+  const callback = () => cycle();
+
+  useEffect(() => {
+    savedCallback.current = callback;
   });
+
+  useEffect(() => {
+    function tick() {
+      savedCallback.current();
+    }
+
+    let a = setInterval(tick, speed);
+    return () => clearInterval(a);
+    // eslint-disable-next-line
+  }, []);
 
   return (
     <div>
       <h1>Game of Life</h1>
+      <button onClick={cycle}>Cycle</button>
       <Grid
         gridFull={gridFull}
         rows={rows}
