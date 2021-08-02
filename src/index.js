@@ -142,6 +142,7 @@ const Main = () => {
   let rows = 30;
   let cols = 50;
 
+  const [go, setGo] = useState(true);
   const [generation, setGeneration] = useState(0);
   const [gridFull, setGridFull] = useState(
     Array(rows)
@@ -249,28 +250,43 @@ const Main = () => {
 
   // *********************************************************************************
 
-  const savedCallback = useRef();
+  const savedCallBack = useRef();
 
   const callback = () => cycle();
 
   useEffect(() => {
-    savedCallback.current = callback;
+    if (go) {
+      savedCallBack.current = callback;
+    } else {
+      savedCallBack.current = () => {
+        return;
+      };
+    }
   });
 
   useEffect(() => {
-    function tick() {
-      savedCallback.current();
-    }
+    const tick = () => {
+      savedCallBack.current();
+    };
 
-    let a = setInterval(tick, speed);
-    return () => clearInterval(a);
+    let cycleInterval = setInterval(tick, speed);
+    return () => clearInterval(cycleInterval);
     // eslint-disable-next-line
   }, []);
+
+  const stop = () => {
+    setGo(false);
+  };
+  const start = () => {
+    setGo(true);
+  };
 
   return (
     <div>
       <h1>Game of Life</h1>
       <button onClick={cycle}>Cycle</button>
+      <button onClick={stop}>Stop</button>
+      <button onClick={start}>Start</button>
       <Grid
         gridFull={gridFull}
         rows={rows}
