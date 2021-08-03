@@ -2,6 +2,10 @@
 
 **[Link to live site](https://keen-knuth-b29877.netlify.app/ "Conway's Game of Life")** - courtesy of Netlify
 
+## Preview:
+
+![Example image of the game display](./public/Preview.png)
+
 ## Built with:
 
 - React
