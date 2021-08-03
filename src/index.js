@@ -92,7 +92,7 @@ const Main = () => {
         neighbourCount++;
       }
     }
-    if (j < rows - 1) {
+    if (j < cols - 1) {
       if (gridFull[i][j + 1]) {
         neighbourCount++;
       }
