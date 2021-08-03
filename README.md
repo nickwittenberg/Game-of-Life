@@ -9,6 +9,12 @@
 - ESLint
 - Prettier
 
+## Local development
+
+1. `npm install` to get dependencies
+2. `npm start` to run a development server, this will open the game in your browser
+3. Open `./src/index.js` in your code editor
+
 ## Contact
 
 `Nick Wittenberg - junior web developer`
