@@ -32,7 +32,11 @@ const Main = () => {
   };
 
   const germinate = () => {
-    let gridCopy = arrayClone(gridFull);
+    let gridCopy = arrayClone(
+      Array(rows)
+        .fill()
+        .map(() => Array(cols).fill(false))
+    );
     for (let i = 0; i < rows; i++) {
       for (let j = 0; j < cols; j++) {
         if (Math.floor(Math.random() * 4) === 1) {
@@ -43,7 +47,7 @@ const Main = () => {
     setGridFull(gridCopy);
   };
 
-  // Cycle effect
+  // Cycle function
 
   const cycle = () => {
     let gridCopy = arrayClone(gridFull);
@@ -151,6 +155,11 @@ const Main = () => {
   const paceSlow = () => {
     setSpeed(200);
   };
+  const reset = () => {
+    setGo(false);
+    germinate();
+    setSpeed(100);
+  };
 
   return (
     <div>
@@ -158,6 +167,7 @@ const Main = () => {
 
       <button onClick={stop}>Stop</button>
       <button onClick={start}>Start</button>
+      <button onClick={reset}>Reset</button>
       <button onClick={cycle}>Cycle</button>
       <button onClick={paceSlow}>Slow</button>
       <button onClick={paceMedium}>Medium</button>
