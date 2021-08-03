@@ -37,7 +37,7 @@ h1,
 h2,
 h3,
 h4 {
-  color: white;
+  color: snow;
   margin: auto;
   text-align: center;
   margin-top: 10px;
@@ -68,4 +68,11 @@ button {
   border-radius: 14px;
   margin: 0.5rem 0.5rem;
   border: 0.2rem outset grey;
+  transition: border 0.3s;
+}
+
+button:hover,
+button:focus {
+  border: 0.2rem outset burlywood;
+  outline: none;
 }
