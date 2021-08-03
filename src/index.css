@@ -13,6 +13,7 @@ body {
   background-repeat: repeat;
   font-family: joystix, monospace;
   text-align: center;
+  color: snow;
 }
 .cell {
   display: inline-block;
@@ -34,11 +35,8 @@ body {
 }
 
 h1,
-h2,
-h3,
-h4 {
-  color: snow;
-  margin: auto;
+h2 {
+  margin: 3rem auto;
   text-align: center;
   margin-top: 10px;
 }
@@ -46,9 +44,6 @@ h4 {
 h1 {
   font-size: 5.2rem;
   margin-bottom: 0.5rem;
-}
-h4 {
-  margin-top: 0px;
 }
 
 .grid {
@@ -75,4 +70,24 @@ button:hover,
 button:focus {
   border: 0.2rem outset burlywood;
   outline: none;
+}
+
+.instructions {
+  max-width: 70%;
+  margin: 2rem auto;
+  text-align: left;
+}
+.instructions p {
+  text-align: left;
+}
+
+@media only screen and (min-width: 50rem) {
+  .instructions {
+    max-width: 50%;
+  }
+}
+@media only screen and (min-width: 75rem) {
+  .instructions {
+    max-width: 30%;
+  }
 }

@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import ReactDOM from "react-dom";
 import Grid from "./Grid.js";
 import "./index.css";
+import Instructions from "./Instructions.js";
 
 const Main = () => {
   let rows = 30;
@@ -207,6 +208,7 @@ const Main = () => {
         selectCell={selectCell}
       />
       <h2>Generations: {generation}</h2>
+      <Instructions />
     </div>
   );
 };
