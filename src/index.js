@@ -157,6 +157,7 @@ const Main = () => {
   };
   const reset = () => {
     setGo(false);
+    setGeneration(0);
     germinate();
     setSpeed(100);
   };
