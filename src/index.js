@@ -23,13 +23,15 @@ const Main = () => {
   };
 
   // ********************************************************************************
-  // CHECK THIS
+  // Seed board on first load
   // eslint-disable-next-line
   useEffect(() => germinate(), []);
 
   const arrayClone = (array) => {
     return JSON.parse(JSON.stringify(array));
   };
+
+  // germinate/ seed board function
 
   const germinate = () => {
     let gridCopy = arrayClone(
@@ -44,6 +46,17 @@ const Main = () => {
         }
       }
     }
+    setGridFull(gridCopy);
+  };
+
+  // Wipe board function
+
+  const wipeBoard = () => {
+    let gridCopy = arrayClone(
+      Array(rows)
+        .fill()
+        .map(() => Array(cols).fill(false))
+    );
     setGridFull(gridCopy);
   };
 
@@ -118,6 +131,8 @@ const Main = () => {
 
   // *********************************************************************************
 
+  // INTERVAL EFFECT REQUIRING useRef()
+
   const savedCallBack = useRef();
 
   useEffect(() => {
@@ -139,40 +154,52 @@ const Main = () => {
     return () => clearInterval(cycleInterval);
   }, [speed]);
 
+  // BUTTON FUNCTIONS
+
   const stop = () => {
     setGo(false);
   };
+
   const start = () => {
     setGo(true);
+  };
+
+  const clear = () => {
+    setGo(false);
+    setGeneration(0);
+    wipeBoard();
+    setSpeed(100);
   };
 
   const paceFast = () => {
     setSpeed(50);
   };
+
   const paceMedium = () => {
     setSpeed(100);
   };
+
   const paceSlow = () => {
     setSpeed(200);
   };
-  const reset = () => {
-    setGo(false);
-    setGeneration(0);
+
+  const seed = () => {
     germinate();
-    setSpeed(100);
   };
 
   return (
     <div>
       <h1>Game of Life</h1>
 
-      <button onClick={stop}>Stop</button>
       <button onClick={start}>Start</button>
-      <button onClick={reset}>Reset</button>
+      <button onClick={stop}>Stop</button>
+      <button onClick={clear}>Clear</button>
+      <button onClick={seed}>Seed</button>
       <button onClick={cycle}>Cycle</button>
       <button onClick={paceSlow}>Slow</button>
       <button onClick={paceMedium}>Medium</button>
       <button onClick={paceFast}>Fast</button>
+
       <Grid
         gridFull={gridFull}
         rows={rows}
