@@ -67,4 +67,5 @@ button {
   color: limegreen;
   border-radius: 14px;
   margin: 0.5rem 1rem;
+  border: 0.2rem outset grey;
 }
