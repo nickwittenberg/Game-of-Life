@@ -1,6 +1,6 @@
 # Conway's Game of Life
 
-**[Link to live site](https://keen-knuth-b29877.netlify.app/ "Conway's Game of Life")** - courtesy of Netlify
+**[Link to live site](https://lifegameof.netlify.app/ "Conway's Game of Life")** - courtesy of Netlify
 
 ## Preview:
 
