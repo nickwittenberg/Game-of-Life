@@ -4,7 +4,7 @@
 
 ## Preview:
 
-![Example image of the game display](./public/Preview.png)
+<img src="./public/Preview.png" alt="Example image of the game display" width="500"/>
 
 ## Built with:
 
